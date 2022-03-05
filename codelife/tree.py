@@ -84,10 +84,11 @@ def build_file_tree(file, depth=0, parent=None):
         return cur_node
     else:
         sub_files = os.listdir(file)
+        sub_files.sort(reverse=True)
         parent_ent = cur_node
         for sf in sub_files:
             sf_path = os.path.join(file, sf)
-            parent_ent.add_child        (build_file_tree(sf_path, depth + 1, parent_ent))
+            parent_ent.add_child(build_file_tree(sf_path, depth + 1, parent_ent))
         return parent_ent
 
 
